@@ -1,4 +1,4 @@
-package tajiboi.compassapp;
+package com.test.compassapp;
 
 import android.app.Activity;
 import android.hardware.Sensor;
@@ -40,11 +40,11 @@ public class MainActivity extends Activity implements SensorEventListener {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        setContentView(R.layout.activity_main);
-        magneticTextView = (TextView) findViewById(R.id.magnetic_text_view);
-        magneticRawTextView = (TextView) findViewById(R.id.magnetic_raw_text_view);
-        proximityTextView = (TextView) findViewById(R.id.proximity_text_view);
-        lightTextView = (TextView) findViewById(R.id.light_text_view);
+        setContentView(com.test.compassapp.R.layout.activity_main);
+        magneticTextView = (TextView) findViewById(com.test.compassapp.R.id.magnetic_text_view);
+        magneticRawTextView = (TextView) findViewById(com.test.compassapp.R.id.magnetic_raw_text_view);
+        proximityTextView = (TextView) findViewById(com.test.compassapp.R.id.proximity_text_view);
+        lightTextView = (TextView) findViewById(com.test.compassapp.R.id.light_text_view);
 
         sensorManager = (SensorManager) getSystemService(SENSOR_SERVICE);
         magneticSensor = sensorManager.getDefaultSensor(Sensor.TYPE_MAGNETIC_FIELD);

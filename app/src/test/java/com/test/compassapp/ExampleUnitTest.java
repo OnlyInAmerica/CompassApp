@@ -1,4 +1,4 @@
-package tajiboi.compassapp;
+package com.test.compassapp;
 
 import org.junit.Test;
 

@@ -1,4 +1,4 @@
-package tajiboi.compassapp;
+package com.test.compassapp;
 
 import android.app.Service;
 import android.content.Intent;
