@@ -23,7 +23,7 @@
 
         <receiver android:name=".TestBroadcast">
             <intent-filter>
-                <action android:name="tajiboi.compassapp.start"/>
+                <action android:name="${applicationId}.action.START"/>
             </intent-filter>
         </receiver>
 

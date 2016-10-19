@@ -8,7 +8,7 @@ import android.content.Intent;
  * Created by chavi on 9/4/16.
  */
 public class TestBroadcast extends BroadcastReceiver {
-    public static final String ACTION_START = BuildConfig.APPLICATION_ID + ".start";
+    public static final String ACTION_START = BuildConfig.APPLICATION_ID + "action.START";
 
     @Override
     public void onReceive(Context context, Intent intent) {
