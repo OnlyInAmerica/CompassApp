@@ -3,4 +3,14 @@
     <color name="colorPrimary">#3F51B5</color>
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
+
+    <color name="xAxis">#F44336</color>
+    <color name="yAxis">#4CAF50</color>
+    <color name="zAxis">#2196F3</color>
+    <color name="mountState">#673AB7</color>
+
+    <color name="chartThreshold">#757575</color>
+    <color name="chartAxisLabels">#EEEEEE</color>
+    <color name="chartMarkers">#FFE082</color>
 </resources>
+
