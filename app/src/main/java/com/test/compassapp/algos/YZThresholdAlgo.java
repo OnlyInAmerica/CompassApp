@@ -64,7 +64,12 @@ public class YZThresholdAlgo implements MagneticMountDetector.SensorAlgo {
             return newConfidence;
         }
 
-        if (y > (baseline[1] * BASELINE_MOUNT_MULTIPLIER) && z < (baseline[2] * BASELINE_MOUNT_MULTIPLIER)) {
+        float yDist = y - baseline[1];
+        float zDist = z - baseline[2];
+
+        if (Math.abs(yDist) > Math.abs(baseline[1] * BASELINE_MOUNT_MULTIPLIER) &&
+                Math.abs(zDist) > Math.abs(baseline[2] * BASELINE_MOUNT_MULTIPLIER) &&
+                yDist > 0 && zDist < 0) {
             newConfidence = FULL_CONFIDENCE_ON_MAGNET;
         } else {
             newConfidence = FULL_CONFIDENCE_OFF_MAGNET;
