@@ -24,9 +24,11 @@ import timber.log.Timber;
  */
 public class ChartView extends View {
 
-    private static float SCALING_FACTOR = 2;
+    private static final int NUM_Y_AXIS_LABELS = 6;
 
-    private static float PX_PER_POINT = 2;
+    private static final float SCALING_FACTOR = 2;
+
+    private static final float PX_PER_POINT = 1;
 
     private static int[] seriesColors;
 
@@ -200,8 +202,8 @@ public class ChartView extends View {
             }
 
             // Draw y-axis labels
-            float increment = height / 4;
-            for (int y = 0; y <= 4; y++) {
+            float increment = height / NUM_Y_AXIS_LABELS;
+            for (int y = 0; y <= NUM_Y_AXIS_LABELS; y++) {
                 float scaledVal = y * increment;
                 float val = ((scaledVal / height) * Math.abs(maxValue - minValue)) + minValue;
                 float labelHeight = Math.max(2 * FONT_SIZE_PX, Math.min(height - FONT_SIZE_PX, height - scaledVal));
