@@ -8,7 +8,7 @@ import com.test.compassapp.MagneticMountDetector;
 import timber.log.Timber;
 
 /**
- * Use the individual axis magnitudes of the SensorEvent values to determine mount status.
+ * Detect equal and opposing effects on the Y and Z axes of the SensorEvent values to determine mount status.
  * Created by dbro on 10/21/16.
  */
 public class YZThresholdAlgo implements MagneticMountDetector.SensorAlgo {
