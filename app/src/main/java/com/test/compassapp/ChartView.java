@@ -16,6 +16,7 @@ import android.view.View;
 
 import java.io.OutputStream;
 import java.util.HashMap;
+import java.util.Locale;
 
 import timber.log.Timber;
 
@@ -94,29 +95,27 @@ public class ChartView extends View {
     private void init() {
 
         // For printing y-axis labels
-        axisLabelPaint.setStyle(Paint.Style.STROKE);
-        axisLabelPaint.setStrokeWidth(2);
+        axisLabelPaint.setStyle(Paint.Style.FILL);
         axisLabelPaint.setTextSize(FONT_SIZE_PX);
         axisLabelPaint.setTextAlign(Paint.Align.RIGHT);
         axisLabelPaint.setColor(getResources().getColor(R.color.chartAxisLabels));
 
         // For printing series labels
-        seriesLabelPaint.setStyle(Paint.Style.STROKE);
+        seriesLabelPaint.setStyle(Paint.Style.FILL_AND_STROKE);
         seriesLabelPaint.setStrokeWidth(2);
         seriesLabelPaint.setTextSize(FONT_SIZE_PX);
         seriesLabelPaint.setTextAlign(Paint.Align.LEFT);
         seriesLabelPaint.setColor(getResources().getColor(R.color.chartAxisLabels));
 
         // For printing x-axis markers
-        markerPaint.setStyle(Paint.Style.STROKE);
+        markerPaint.setStyle(Paint.Style.FILL_AND_STROKE);
         markerPaint.setStrokeWidth(2);
         markerPaint.setTextSize(FONT_SIZE_PX);
         markerPaint.setColor(getResources().getColor(R.color.chartMarkers));
 
         // For printing threshold value during adjustment
         int thresholdColor = getResources().getColor(R.color.chartThreshold);
-        tooltipLabelPaint.setStyle(Paint.Style.STROKE);
-        tooltipLabelPaint.setStrokeWidth(1);
+        tooltipLabelPaint.setStyle(Paint.Style.FILL);
         tooltipLabelPaint.setTextSize(FONT_SIZE_PX);
         tooltipLabelPaint.setColor(thresholdColor);
 
@@ -198,7 +197,7 @@ public class ChartView extends View {
             float thresholdYPos = (Math.abs(maxValue - thresholdValue) / Math.abs(maxValue - minValue)) * height;
             tempCanvas.drawLine(0, thresholdYPos, width, thresholdYPos, thresholdPaint);
             if (adjustingThreshold) {
-                tempCanvas.drawText(String.valueOf(thresholdValue), 100, thresholdYPos - FONT_SIZE_PX, tooltipLabelPaint);
+                tempCanvas.drawText(String.format(Locale.US, "%.2f", thresholdValue), 100, thresholdYPos - FONT_SIZE_PX, tooltipLabelPaint);
             }
 
             // Draw y-axis labels
