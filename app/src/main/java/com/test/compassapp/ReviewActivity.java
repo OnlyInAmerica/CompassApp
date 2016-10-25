@@ -20,6 +20,9 @@ import java.util.Arrays;
 import java.util.Comparator;
 
 import static android.os.Environment.DIRECTORY_PICTURES;
+import static com.test.compassapp.MagneticMountDetector.NO_DETERMINATION;
+import static com.test.compassapp.MagneticMountDetector.OFF_MAGNET;
+import static com.test.compassapp.MagneticMountDetector.ON_MAGNET;
 
 public class ReviewActivity extends AppCompatActivity {
 
@@ -69,10 +72,12 @@ public class ReviewActivity extends AppCompatActivity {
             view.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
+                    File thisFile = (File) v.getTag();
                     ArrayList<File> uris = new ArrayList<>();
-                    uris.add((File) v.getTag());
-                    String title = DeviceUtil.getDeviceName();
-                    Util.emailLogs(ReviewActivity.this, title, "", uris);
+                    uris.add(thisFile);
+                    String title = "Device: " + DeviceUtil.getDeviceName();
+                    String state = "Last Algorithm Guess: " + describeState(FileUtil.parseResultFromChartCaptureFilename(thisFile.getName())) + ".";
+                    Util.emailLogs(ReviewActivity.this, title, state, uris);
                 }
             });
             return new ViewHolder(view);
@@ -94,5 +99,20 @@ public class ReviewActivity extends AppCompatActivity {
         }
     }
 
-
+    /**
+     * Describe a {@link com.test.compassapp.MagneticMountDetector.MountStatus} in a descriptive format
+     * for inclusion in an email report
+     */
+    public static String describeState(@MagneticMountDetector.MountStatus int status) {
+        switch (status) {
+            case OFF_MAGNET:
+                return "Device off Magnet";
+            case ON_MAGNET:
+                return "Device on Magnet";
+            case NO_DETERMINATION:
+                return "No Determination Made. Algorithm was establishing baseline or had too little confidence to judge.";
+            default:
+                return "Unknown status";
+        }
+    }
 }

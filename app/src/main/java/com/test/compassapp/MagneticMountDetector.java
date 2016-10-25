@@ -101,17 +101,4 @@ public class MagneticMountDetector {
          */
         void setThresholdValue(double threshold);
     }
-
-    public static String describeState(@MountStatus int status) {
-        switch (status) {
-            case OFF_MAGNET:
-                return "Off";
-            case ON_MAGNET:
-                return "On";
-            case NO_DETERMINATION:
-                return "...";
-            default:
-                return "?";
-        }
-    }
 }

@@ -150,7 +150,7 @@ public class ChartActivity extends AppCompatActivity implements SensorEventListe
                 chartView.appendValue("Z", magnetometerReading[2]);
 
                 if (result != lastMountResult) {
-                    chartView.addTimeMarker(MagneticMountDetector.describeState(result));
+                    chartView.addTimeMarker(describeState(result));
                 } else {
                     chartView.addTimeMarker("");
                 }
@@ -185,7 +185,8 @@ public class ChartActivity extends AppCompatActivity implements SensorEventListe
     public void saveChart() {
 
         try {
-            File chartImage = new File(getApplicationContext().getExternalFilesDir(DIRECTORY_PICTURES), "chart_" + System.currentTimeMillis() + ".png");
+            String filename = FileUtil.createChartCaptureFilenameForResult(lastMountResult);
+            File chartImage = new File(getApplicationContext().getExternalFilesDir(DIRECTORY_PICTURES), filename);
             FileOutputStream fos = new FileOutputStream(chartImage);
             chartView.saveToFile(fos);
             fos.close();
@@ -209,6 +210,23 @@ public class ChartActivity extends AppCompatActivity implements SensorEventListe
         @Override
         public String toString() {
             return label;
+        }
+    }
+
+    /**
+     * Describe a {@link com.test.compassapp.MagneticMountDetector.MountStatus} for the purpose
+     * of displaying as an x-axis marker on the Chart. Names should be short.
+     */
+    public static String describeState(@MagneticMountDetector.MountStatus int status) {
+        switch (status) {
+            case OFF_MAGNET:
+                return "Off";
+            case ON_MAGNET:
+                return "On";
+            case NO_DETERMINATION:
+                return "?";
+            default:
+                return "?";
         }
     }
 }
