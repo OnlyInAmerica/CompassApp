@@ -1,5 +1,5 @@
 <resources>
     <string name="app_name">Magnetic Mount Detector</string>
-    <string name="title_activity_review">ReviewActivity</string>
+    <string name="title_activity_review">Saved Charts</string>
     <string name="action_settings">Settings</string>
 </resources>
