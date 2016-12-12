@@ -129,7 +129,7 @@ public class ChartView extends View {
         seriesPaint.setColor(Color.BLACK);
         seriesPaint.setStrokeWidth(3);
 
-        scalingMatrix.preScale(2, 2);
+        scalingMatrix.preScale(SCALING_FACTOR, SCALING_FACTOR);
 
         seriesColors = new int[] {
                 getResources().getColor(R.color.xAxis),
